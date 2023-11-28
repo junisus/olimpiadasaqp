@@ -3,5 +3,6 @@
 	<persistence-unit name="Oli">
 		<jta-data-source>java:/jdbc/dbolimpiadasaqp</jta-data-source>
 		<class>usuario.dominio.Usuario</class>
+		<class>evento.dominio.Evento</class>
 	</persistence-unit>
 </persistence>

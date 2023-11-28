@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="java.util.List"%>
+<%@ page import="evento.dominio.Evento"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -183,19 +185,25 @@
 						<th scope="col" class="px-6 py-3">Organizador</th>
 						<th scope="col" class="px-6 py-3">Fecha de inicio</th>
 						<th scope="col" class="px-6 py-3">Fecha de fin</th>
+						<th scope="col" class="px-6 py-3">Lugar</th>
 						<th scope="col" class="px-6 py-3"></th>
 						<th scope="col" class="px-6 py-3"></th>
 					</tr>
 				</thead>
 				<tbody>
+					<%	List<Evento> eventos = (List<Evento>) request.getAttribute("eventos");
+        		
+				for (Evento evento : eventos) {
+        %>
 					<tr
 						class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
 						<th scope="row"
 							class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-							Evento 1</th>
-						<td class="px-6 py-4">Organizador 1</td>
-						<td class="px-6 py-4">Fecha A</td>
-						<td class="px-6 py-4">Fecha B</td>
+							<%= evento.getNombre() %></th>
+						<td class="px-6 py-4"><%= evento.getOrganizador() %></td>
+						<td class="px-6 py-4"><%= evento.getFechaInicio() %></td>
+						<td class="px-6 py-4"><%= evento.getFechaFin() %></td>
+						<td class="px-6 py-4"><%= evento.getLugar()%></td>
 						<td class="px-6 py-4"><a href="#"
 							class="flex items-center justify-center p-2 text-yellow-900 rounded-lg dark:text-white hover:bg-yellow-100 dark:hover:bg-yellow-700 group">
 								<svg
@@ -219,161 +227,10 @@
   </svg>
 						</a></td>
 					</tr>
-					<tr
-						class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-						<th scope="row"
-							class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-							Evento 2</th>
-						<td class="px-6 py-4">Organizador 2</td>
-						<td class="px-6 py-4">Fecha A</td>
-						<td class="px-6 py-4">Fecha B</td>
-						<td class="px-6 py-4"><a href="#"
-							class="flex items-center justify-center p-2 text-yellow-900 rounded-lg dark:text-white hover:bg-yellow-100 dark:hover:bg-yellow-700 group">
-								<svg
-									class="flex-shrink-0 w-4 h-4 text-yellow-500 transition duration-75 dark:text-yellow-400 group-hover:text-yellow-900 dark:group-hover:text-white"
-									aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-									fill="none" viewBox="0 0 21 21">
-    <path stroke="currentColor" stroke-linecap="round"
-										stroke-linejoin="round" stroke-width="2"
-										d="M7.418 17.861 1 20l2.139-6.418m4.279 4.279 10.7-10.7a3.027 3.027 0 0 0-2.14-5.165c-.802 0-1.571.319-2.139.886l-10.7 10.7m4.279 4.279-4.279-4.279m2.139 2.14 7.844-7.844m-1.426-2.853 4.279 4.279" />
-  </svg>
-						</a></td>
-						<td class="px-6 py-4"><a href="#"
-							class="flex items-center justify-center p-2 text-red-900 rounded-lg dark:text-white hover:bg-red-100 dark:hover:bg-red-700 group">
-								<svg
-									class="flex-shrink-0 w-4 h-4 text-red-500 transition duration-75 dark:text-red-400 group-hover:text-red-900 dark:group-hover:text-white"
-									aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-									fill="none" viewBox="0 0 18 20">
-    <path stroke="currentColor" stroke-linecap="round"
-										stroke-linejoin="round" stroke-width="2"
-										d="M1 5h16M7 8v8m4-8v8M7 1h4a1 1 0 0 1 1 1v3H6V2a1 1 0 0 1 1-1ZM3 5h12v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5Z" />
-  </svg>
-						</a></td>
-					</tr>
-					<tr
-						class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-						<th scope="row"
-							class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-							Evento 3</th>
-						<td class="px-6 py-4">Organizador 3</td>
-						<td class="px-6 py-4">Fecha A</td>
-						<td class="px-6 py-4">Fecha B</td>
-						<td class="px-6 py-4"><a href="#"
-							class="flex items-center justify-center p-2 text-yellow-900 rounded-lg dark:text-white hover:bg-yellow-100 dark:hover:bg-yellow-700 group">
-								<svg
-									class="flex-shrink-0 w-4 h-4 text-yellow-500 transition duration-75 dark:text-yellow-400 group-hover:text-yellow-900 dark:group-hover:text-white"
-									aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-									fill="none" viewBox="0 0 21 21">
-    <path stroke="currentColor" stroke-linecap="round"
-										stroke-linejoin="round" stroke-width="2"
-										d="M7.418 17.861 1 20l2.139-6.418m4.279 4.279 10.7-10.7a3.027 3.027 0 0 0-2.14-5.165c-.802 0-1.571.319-2.139.886l-10.7 10.7m4.279 4.279-4.279-4.279m2.139 2.14 7.844-7.844m-1.426-2.853 4.279 4.279" />
-  </svg>
-						</a></td>
-						<td class="px-6 py-4"><a href="#"
-							class="flex items-center justify-center p-2 text-red-900 rounded-lg dark:text-white hover:bg-red-100 dark:hover:bg-red-700 group">
-								<svg
-									class="flex-shrink-0 w-4 h-4 text-red-500 transition duration-75 dark:text-red-400 group-hover:text-red-900 dark:group-hover:text-white"
-									aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-									fill="none" viewBox="0 0 18 20">
-    <path stroke="currentColor" stroke-linecap="round"
-										stroke-linejoin="round" stroke-width="2"
-										d="M1 5h16M7 8v8m4-8v8M7 1h4a1 1 0 0 1 1 1v3H6V2a1 1 0 0 1 1-1ZM3 5h12v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5Z" />
-  </svg>
-						</a></td>
-					</tr>
-					<tr
-						class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-						<th scope="row"
-							class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-							Evento 4</th>
-						<td class="px-6 py-4">Organizador 4</td>
-						<td class="px-6 py-4">Fecha A</td>
-						<td class="px-6 py-4">Fecha B</td>
-						<td class="px-6 py-4"><a href="#"
-							class="flex items-center justify-center p-2 text-yellow-900 rounded-lg dark:text-white hover:bg-yellow-100 dark:hover:bg-yellow-700 group">
-								<svg
-									class="flex-shrink-0 w-4 h-4 text-yellow-500 transition duration-75 dark:text-yellow-400 group-hover:text-yellow-900 dark:group-hover:text-white"
-									aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-									fill="none" viewBox="0 0 21 21">
-    <path stroke="currentColor" stroke-linecap="round"
-										stroke-linejoin="round" stroke-width="2"
-										d="M7.418 17.861 1 20l2.139-6.418m4.279 4.279 10.7-10.7a3.027 3.027 0 0 0-2.14-5.165c-.802 0-1.571.319-2.139.886l-10.7 10.7m4.279 4.279-4.279-4.279m2.139 2.14 7.844-7.844m-1.426-2.853 4.279 4.279" />
-  </svg>
-						</a></td>
-						<td class="px-6 py-4"><a href="#"
-							class="flex items-center justify-center p-2 text-red-900 rounded-lg dark:text-white hover:bg-red-100 dark:hover:bg-red-700 group">
-								<svg
-									class="flex-shrink-0 w-4 h-4 text-red-500 transition duration-75 dark:text-red-400 group-hover:text-red-900 dark:group-hover:text-white"
-									aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-									fill="none" viewBox="0 0 18 20">
-    <path stroke="currentColor" stroke-linecap="round"
-										stroke-linejoin="round" stroke-width="2"
-										d="M1 5h16M7 8v8m4-8v8M7 1h4a1 1 0 0 1 1 1v3H6V2a1 1 0 0 1 1-1ZM3 5h12v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5Z" />
-  </svg>
-						</a></td>
-					</tr>
-					<tr
-						class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-						<th scope="row"
-							class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-							Evento 5</th>
-						<td class="px-6 py-4">Organizador 5</td>
-						<td class="px-6 py-4">Fecha A</td>
-						<td class="px-6 py-4">Fecha B</td>
-						<td class="px-6 py-4"><a href="#"
-							class="flex items-center justify-center p-2 text-yellow-900 rounded-lg dark:text-white hover:bg-yellow-100 dark:hover:bg-yellow-700 group">
-								<svg
-									class="flex-shrink-0 w-4 h-4 text-yellow-500 transition duration-75 dark:text-yellow-400 group-hover:text-yellow-900 dark:group-hover:text-white"
-									aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-									fill="none" viewBox="0 0 21 21">
-    <path stroke="currentColor" stroke-linecap="round"
-										stroke-linejoin="round" stroke-width="2"
-										d="M7.418 17.861 1 20l2.139-6.418m4.279 4.279 10.7-10.7a3.027 3.027 0 0 0-2.14-5.165c-.802 0-1.571.319-2.139.886l-10.7 10.7m4.279 4.279-4.279-4.279m2.139 2.14 7.844-7.844m-1.426-2.853 4.279 4.279" />
-  </svg>
-						</a></td>
-						<td class="px-6 py-4"><a href="#"
-							class="flex items-center justify-center p-2 text-red-900 rounded-lg dark:text-white hover:bg-red-100 dark:hover:bg-red-700 group">
-								<svg
-									class="flex-shrink-0 w-4 h-4 text-red-500 transition duration-75 dark:text-red-400 group-hover:text-red-900 dark:group-hover:text-white"
-									aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-									fill="none" viewBox="0 0 18 20">
-    <path stroke="currentColor" stroke-linecap="round"
-										stroke-linejoin="round" stroke-width="2"
-										d="M1 5h16M7 8v8m4-8v8M7 1h4a1 1 0 0 1 1 1v3H6V2a1 1 0 0 1 1-1ZM3 5h12v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5Z" />
-  </svg>
-						</a></td>
-					</tr>
-					<tr
-						class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-						<th scope="row"
-							class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-							Evento 6</th>
-						<td class="px-6 py-4">Organizador 6</td>
-						<td class="px-6 py-4">Fecha A</td>
-						<td class="px-6 py-4">Fecha B</td>
-						<td class="px-6 py-4"><a href="#"
-							class="flex items-center justify-center p-2 text-yellow-900 rounded-lg dark:text-white hover:bg-yellow-100 dark:hover:bg-yellow-700 group">
-								<svg
-									class="flex-shrink-0 w-4 h-4 text-yellow-500 transition duration-75 dark:text-yellow-400 group-hover:text-yellow-900 dark:group-hover:text-white"
-									aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-									fill="none" viewBox="0 0 21 21">
-    <path stroke="currentColor" stroke-linecap="round"
-										stroke-linejoin="round" stroke-width="2"
-										d="M7.418 17.861 1 20l2.139-6.418m4.279 4.279 10.7-10.7a3.027 3.027 0 0 0-2.14-5.165c-.802 0-1.571.319-2.139.886l-10.7 10.7m4.279 4.279-4.279-4.279m2.139 2.14 7.844-7.844m-1.426-2.853 4.279 4.279" />
-  </svg>
-						</a></td>
-						<td class="px-6 py-4"><a href="#"
-							class="flex items-center justify-center p-2 text-red-900 rounded-lg dark:text-white hover:bg-red-100 dark:hover:bg-red-700 group">
-								<svg
-									class="flex-shrink-0 w-4 h-4 text-red-500 transition duration-75 dark:text-red-400 group-hover:text-red-900 dark:group-hover:text-white"
-									aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-									fill="none" viewBox="0 0 18 20">
-    <path stroke="currentColor" stroke-linecap="round"
-										stroke-linejoin="round" stroke-width="2"
-										d="M1 5h16M7 8v8m4-8v8M7 1h4a1 1 0 0 1 1 1v3H6V2a1 1 0 0 1 1-1ZM3 5h12v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5Z" />
-  </svg>
-						</a></td>
-					</tr>
+					<% 
+        }
+        %>
+
 				</tbody>
 			</table>
 		</div>
