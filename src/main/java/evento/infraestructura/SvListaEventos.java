@@ -1,7 +1,6 @@
 package evento.infraestructura;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -14,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import evento.aplicacion.EventService;
 import evento.aplicacion.EventServiceImpl;
 import evento.dominio.EventRepository;
-import evento.dominio.Evento;
 
 @WebServlet(name = "SvListaEventos", urlPatterns= {"/eventos"})
 public class SvListaEventos extends HttpServlet {
