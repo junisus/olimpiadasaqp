@@ -44,6 +44,7 @@ public class EventRepositoryImpl implements EventRepository {
 	public void eliminar(Evento evento) {
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
+		evento = em.merge(evento);
 		em.remove(evento);
 		em.getTransaction().commit();
 		em.close();
