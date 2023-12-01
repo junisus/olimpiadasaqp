@@ -30,12 +30,12 @@ public class SvUpdateEvent extends HttpServlet {
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int id = Integer.parseInt(request.getParameter("id-evento-update"));
-		String nombre = request.getParameter("nombre-update");
-		String organizador = request.getParameter("organizador-update");
-		String fechaInicio = request.getParameter("inicio-update");
-		String fechaFin = request.getParameter("fin-update");
-		String lugar = request.getParameter("lugar-update");
+		int id = Integer.parseInt(request.getParameter("id-edit"));
+		String nombre = request.getParameter("nombre-edit");
+		String organizador = request.getParameter("organizador-edit");
+		String fechaInicio = request.getParameter("inicio-edit");
+		String fechaFin = request.getParameter("fin-edit");
+		String lugar = request.getParameter("lugar-edit");
 		
 		SimpleDateFormat formatoEntrada = new SimpleDateFormat("yyyy-MM-dd");
 		
@@ -43,7 +43,7 @@ public class SvUpdateEvent extends HttpServlet {
 	        Date fechaInicioConvertida = new Date(formatoEntrada.parse(fechaInicio).getTime());
 	        Date fechaFinConvertida = new Date(formatoEntrada.parse(fechaFin).getTime());
 
-	        eventService.update(id, organizador, nombre, fechaInicioConvertida, fechaFinConvertida, lugar);
+	        eventService.update(id, nombre, organizador, fechaInicioConvertida, fechaFinConvertida, lugar);
 			response.sendRedirect("./eventos");
 	    } catch (ParseException e) {
 	        e.printStackTrace();
