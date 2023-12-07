@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.List"%>
+<%@ page import="equipo.dominio.Equipo"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -139,7 +141,7 @@
 </aside>
 
 <div class="p-10 sm:ml-64">
-	<div class="text-black-900 text-[25px] font-semibold mt-10">Eventos</div>
+	<div class="text-black-900 text-[25px] font-semibold mt-10">Equipos</div>
 	<div class="flex items-center justify-end mb-4">
 		<span data-modal-target="agregar-modal" data-modal-toggle="agregar-modal" class="cursor-pointer flex items-center justify-center p-2 text-green-900 rounded-lg dark:text-white hover:bg-green-100 dark:hover:bg-green-700 group">
 			<svg class="flex-shrink-0 w-5 h-5 text-green-500 transition duration-75 dark:text-green-400 group-hover:text-green-900 dark:group-hover:text-white"
@@ -161,14 +163,20 @@
 					</tr>
 				</thead>
 				<tbody>
+					<% 
+						List<Equipo> equipos = (List<Equipo>) request.getAttribute("equipos");	
+						
+						for (Equipo equipo : equipos) {
+					%>
+				
 					<tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
 					<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-						Categoría 1	
+						<%= equipo.getIdCategoria() %>
 					</th>
-					<td class="px-6 py-4">Nombre 1</td>
+					<td class="px-6 py-4"><%= equipo.getNombre() %></td>
 					<td class="px-6 py-4 text-blue-500 hover:text-blue-800"><a href="#">Ver jugadores</a></td>
 					<td class="px-6 py-4">
-						<span data-modal-target="editar-modal" data-modal-toggle="editar-modal"
+						<span data-modal-target="editar-<%= equipo.getId()%>" data-modal-toggle="editar-<%= equipo.getId()%>"
 							class="flex items-center justify-center p-2 text-yellow-900 rounded-lg dark:text-white hover:bg-yellow-100 dark:hover:bg-yellow-700 group">
 							<svg class="cursor-pointer flex-shrink-0 w-4 h-4 text-yellow-500 transition duration-75 dark:text-yellow-400 group-hover:text-yellow-900 dark:group-hover:text-white"
 								aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 21 21">
@@ -178,7 +186,7 @@
 						</span>
 					</td>
 					<td class="px-6 py-4">
-						<span data-modal-target="eliminar-modal" data-modal-toggle="eliminar-modal"
+						<span data-modal-target="eliminar-<%= equipo.getId()%>" data-modal-toggle="eliminar-<%= equipo.getId()%>"
 							class="cursor-pointer flex items-center justify-center p-2 text-red-900 rounded-lg dark:text-white hover:bg-red-100 dark:hover:bg-red-700 group">
 								<svg class="flex-shrink-0 w-4 h-4 text-red-500 transition duration-75 dark:text-red-400 group-hover:text-red-900 dark:group-hover:text-white"
 									aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
@@ -189,29 +197,29 @@
 					</td>
 				</tr>
 				
-				<div id="eliminar-modal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+				<div id="eliminar-<%= equipo.getId()%>" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
    					<div class="relative p-4 w-full max-w-md max-h-full">
        					<div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
            					<button type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" 
-           						data-modal-hide="eliminar-modal">
+           						data-modal-hide="eliminar-<%= equipo.getId()%>">
                					<svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                    					<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
                					</svg>
                					<span class="sr-only">Close modal</span>
            					</button>
            					<div class="p-4 md:p-5 text-center">
-           						<form action="SvDeleteEvent" method="POST">
-           							<input name="id-evento" type="hidden" id="id-evento" value="id">
+           						<form action="SvDeleteTeam" method="POST">
+           							<input name="id-equipo-delete" type="hidden" id="id-equipo-delete" value="<%= equipo.getId()%>">
                						<img class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200"
-										aria-hidden="true" src="../img/icons/warning-icon.png">
+										aria-hidden="true" src="img/icons/warning-icon.png">
                						<h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
-               							¿Seguro que quieres eliminar este evento?
+               							¿Seguro que quieres eliminar este Equipo?
                						</h3>
-               						<button data-modal-hide="eliminar-modal" type="submit" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
+               						<button data-modal-hide="eliminar-<%= equipo.getId()%>" type="submit" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
                    						Si, estoy seguro
                						</button>
                					</form>
-               					<button data-modal-hide="eliminar-modal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+               					<button data-modal-hide="eliminar-<%= equipo.getId()%>" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
                						No, cancelar
                					</button>
            					</div>
@@ -219,17 +227,17 @@
    					</div>
 				</div>
 
-				<div id="editar-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full p-8">
+				<div id="editar-<%= equipo.getId()%>" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full p-8">
    					<div class="relative p-4 w-full max-w-md max-h-full">
        					<!-- Modal content -->
        					<div class="p-4 md:p-5 relative bg-white rounded-lg shadow dark:bg-gray-700">
            					<!-- Modal header -->
            					<div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                					<h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                   					Editar evento
+                   					Editar equipo
                					</h3>
                					<button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" 
-               						data-modal-toggle="editar-modal">
+               						data-modal-toggle="editar-<%= equipo.getId()%>">
                    					<svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                        					<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
                    					</svg>
@@ -237,44 +245,23 @@
                					</button>
            					</div>
            					<!-- Modal body -->
-           					<form class="p-4 md:p-5" action="SvUpdateEvent" method="POST">
-               					<input name="id-edit" type="hidden" id="id-edit" value="Id">
+           					<form class="p-4 md:p-5" action="SvUpdateTeam" method="POST">
+               					<input name="id-equipo-edit" type="hidden" id="id-equipo-edit" value="<%= equipo.getId()%>">
                					<div class="grid gap-4 mb-4 grid-cols-2">
                    					<div class="col-span-2">
-                       					<label for="nombre" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                       					<label for="categoria-edit" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                       						Categoría
+                       					</label>
+                       					<input type="text" name="id-categoria-edit" id="id-categoria-edit" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                       						placeholder="Escriba el id de la categoría" required="" value="<%= equipo.getIdCategoria()%>">
+                   					</div>
+                   					<div class="col-span-2">
+                       					<label for="nombre-edit" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                        						Nombre
                        					</label>
                        					<input type="text" name="nombre-edit" id="nombre-edit" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                       						placeholder="Escriba el nombre del evento" required="" value="">
-                   					</div>
-                   					<div class="col-span-2">
-                       					<label for="organizador" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                       						Organizador
-                       					</label>
-                       					<input type="text" name="organizador-edit" id="organizador-edit" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                       						placeholder="Escriba el nombre del Organizador" required="" value="">
+                       						placeholder="Escriba el nombre del equipo" required="" value="<%= equipo.getNombre()%>">
                        				</div>
-                   					<div class="col-span-2 sm:col-span-1">
-                       					<label for="fecha-inicio" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                       						Fecha de inicio
-                       					</label>
-                       					<input name="inicio-edit" type="date" id="inicio-edit" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
-                       					required="" value="">
-                   					</div>
-				                    <div class="col-span-2 sm:col-span-1">
-				                        <label for="fecha-fin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-				                        	Fecha de Fin
-				                        </label>
-				                        <input name="fin-edit" type="date" id="fin-edit" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
-				                        required="" value="">
-				                    </div>
-				                    <div class="col-span-2">
-				                        <label for="lugar" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-				                        	Lugar
-				                        </label>
-				                        <input type="text" name="lugar-edit" id="lugar-edit" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" 
-				                        placeholder="Escriba la dirección donde se realizara el evento" required="" value="">
-				                    </div>
                					</div>
 				                <button type="submit" class="text-white inline-flex items-center bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
 				                    Guardar cambios
@@ -283,6 +270,9 @@
 				        </div>
 				    </div>
 				</div>
+				<%
+					}
+				%>
 			</tbody>
 		</table>
 	</div>
@@ -294,9 +284,10 @@
 	            <!-- Modal header -->
 	            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
 	                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-	                    Crear nuevo evento
+	                    Crear nuevo equipo 
 	                </h3>
-	                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="agregar-modal">
+	                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" 
+	                	data-modal-toggle="agregar-modal">
 	                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
 	                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
 	                    </svg>
@@ -304,33 +295,26 @@
 	                </button>
 	            </div>
 	            <!-- Modal body -->	
-	            <form class="p-4 md:p-5" action="SvAddEvent" method="POST">
+	            <form class="p-4 md:p-5" action="SvAddTeam" method="POST">
 	                <div class="grid gap-4 mb-4 grid-cols-2">
 	                    <div class="col-span-2">
-	                        <label for="nombre" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
-	                        <input type="text" name="nombre" id="nombre" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Escriba el nombre del evento" required="">
+	                        <label for="id-categoria" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+	                        	Categoría
+	                        </label>
+	                        <input type="text" name="id-categoria" id="id-categoria" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" 
+	                        	placeholder="Escriba el id de la categoria" required="">
 	                    </div>
 	                    <div class="col-span-2">
-	                        <label for="organizador" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Organizador</label>
-	                        <input type="text" name="organizador" id="organizador" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Escriba el nombre del Organizador" required="">
-	                    
-	                    </div>
-	                    <div class="col-span-2 sm:col-span-1">
-	                        <label for="fecha-inicio" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fecha de inicio</label>
-	                        <input name="inicio" type="date" id="inicio" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
-	                    </div>
-	                    <div class="col-span-2 sm:col-span-1">
-	                        <label for="fecha-fin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fecha de Fin</label>
-	                        <input name="fin" type="date" id="fin" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
-	                    </div>
-	                    <div class="col-span-2">
-	                        <label for="lugar" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Lugar</label>
-	                        <input type="text" name="lugar" id="lugar" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Escriba la dirección donde se realizara el evento" required="">
+	                        <label for="nombre" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+	                        	Nombre
+	                        </label>
+	                        <input type="text" name="nombre" id="nombre" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" 
+	                        	placeholder="Escriba el nombre del equipo" required="">
 	                    </div>
 	                </div>
 	                <button type="submit" class="text-white inline-flex items-center bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
 	                    <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
-	                    Agregar nuevo evento
+	                    Agregar nuevo equipo
 	                </button>
 	            </form>
        		</div>
