@@ -19,7 +19,7 @@ public class SportServiceImpl implements SportService {
     public void save(String nombre, String descripcion) {
         Deporte deporte = new Deporte();
         deporte.setNombre(nombre);
-        deporte.setOrganizador(descripcion);
+        deporte.setDescripcion(descripcion);
         sportRepository.guardar(deporte);
     }
 
@@ -33,7 +33,7 @@ public class SportServiceImpl implements SportService {
         Deporte deporte = new Deporte();
         deporte.setId(id);
         deporte.setNombre(nombre);       
-        deporte.setOrganizador(descripcion);
+        deporte.setDescripcion(descripcion);
         sportRepository.actualizar(deporte);
     }
 

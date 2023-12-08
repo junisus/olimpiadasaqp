@@ -38,7 +38,7 @@ public class Deporte {
     public String getDescripcion() {
         return descripcion;
     }
-    public void setOrganizador(String descripcion) {
+    public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
     
