@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.List"%>
+<%@ page import="jugadores.dominio.Jugador"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -162,15 +164,20 @@
 					</tr>
 				</thead>
 				<tbody>
+					<%
+						List<Jugador> jugadores = (List<Jugador>) request.getAttribute("jugadores");
+	        		
+						for (Jugador jugador : jugadores) {
+					%>
 					<tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
 					<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-						Juan Manuel
+						<%= jugador.getNombre() %>
 					</th>
-					<td class="px-6 py-4">Zapata Lozada</td>
-					<td class="px-6 py-4">M</td>
-					<td class="px-6 py-4">25</td>
+					<td class="px-6 py-4"><%= jugador.getApellido() %></td>
+					<td class="px-6 py-4"><%= jugador.getSexo()%></td>
+					<td class="px-6 py-4"><%= jugador.getEdad()%></td>
 					<td class="px-6 py-4">
-						<span data-modal-target="editar-modal" data-modal-toggle="editar-modal"
+						<span data-modal-target="editar-<%= jugador.getId() %>" data-modal-toggle="editar-<%= jugador.getId() %>"
 							class="flex items-center justify-center p-2 text-yellow-900 rounded-lg dark:text-white hover:bg-yellow-100 dark:hover:bg-yellow-700 group">
 							<svg class="cursor-pointer flex-shrink-0 w-4 h-4 text-yellow-500 transition duration-75 dark:text-yellow-400 group-hover:text-yellow-900 dark:group-hover:text-white"
 								aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 21 21">
@@ -180,7 +187,7 @@
 						</span>
 					</td>
 					<td class="px-6 py-4">
-						<span data-modal-target="eliminar-modal" data-modal-toggle="eliminar-modal"
+						<span data-modal-target="eliminar-<%= jugador.getId() %>" data-modal-toggle="eliminar-<%= jugador.getId() %>"
 							class="cursor-pointer flex items-center justify-center p-2 text-red-900 rounded-lg dark:text-white hover:bg-red-100 dark:hover:bg-red-700 group">
 								<svg class="flex-shrink-0 w-4 h-4 text-red-500 transition duration-75 dark:text-red-400 group-hover:text-red-900 dark:group-hover:text-white"
 									aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
@@ -191,29 +198,29 @@
 					</td>
 				</tr>
 
-				<div id="eliminar-modal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+				<div id="eliminar-<%= jugador.getId() %>" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
    					<div class="relative p-4 w-full max-w-md max-h-full">
        					<div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
            					<button type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" 
-           						data-modal-hide="eliminar-modal">
+           						data-modal-hide="eliminar-<%= jugador.getId() %>">
                					<svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                    					<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
                					</svg>
                					<span class="sr-only">Close modal</span>
            					</button>
            					<div class="p-4 md:p-5 text-center">
-           						<form action="SvDeleteEvent" method="POST">
-           							<input name="id-evento" type="hidden" id="id-evento" value="id">
+           						<form action="SvDeletePlayer" method="POST">
+           							<input name="id-jugador-delete" type="hidden" id="id-jugador-delete" value="<%= jugador.getId() %>">
                						<img class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200"
-										aria-hidden="true" src="../img/icons/warning-icon.png">
+										aria-hidden="true" src="img/icons/warning-icon.png">
                						<h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
                							¿Seguro que quieres eliminar este jugador?
                						</h3>
-               						<button data-modal-hide="eliminar-modal" type="submit" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
+               						<button data-modal-hide="eliminar-<%= jugador.getId() %>" type="submit" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
                    						Si, estoy seguro
                						</button>
                					</form>
-               					<button data-modal-hide="eliminar-modal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+               					<button data-modal-hide="eliminar-<%= jugador.getId() %>" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
                						No, cancelar
                					</button>
            					</div>
@@ -221,17 +228,17 @@
    					</div>
 				</div>
 
-				<div id="editar-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full p-8">
+				<div id="editar-<%= jugador.getId() %>" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full p-8">
    					<div class="relative p-4 w-full max-w-md max-h-full">
        					<!-- Modal content -->
        					<div class="p-4 md:p-5 relative bg-white rounded-lg shadow dark:bg-gray-700">
            					<!-- Modal header -->
            					<div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                					<h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                   					Editar evento
+                   					Editar jugador
                					</h3>
                					<button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" 
-               						data-modal-toggle="editar-modal">
+               						data-modal-toggle="editar-<%= jugador.getId() %>">
                    					<svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                        					<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
                    					</svg>
@@ -239,43 +246,39 @@
                					</button>
            					</div>
            					<!-- Modal body -->
-           					<form class="p-4 md:p-5" action="SvUpdateEvent" method="POST">
-               					<input name="id-edit" type="hidden" id="id-edit" value="Id">
+           					<form class="p-4 md:p-5" action="SvUpdatePlayer" method="POST">
+               					<input name="id-jugador-edit" type="hidden" id="id-jugador-edit" value="<%= jugador.getId() %>">
                					<div class="grid gap-4 mb-4 grid-cols-2">
                    					<div class="col-span-2">
-                       					<label for="nombre" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                       					<label for="nombre-edit" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                        						Nombre
                        					</label>
                        					<input type="text" name="nombre-edit" id="nombre-edit" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                       						placeholder="Escriba el nombre del evento" required="" value="">
+                       						placeholder="Escriba el nombre del evento" required="" value="<%= jugador.getNombre() %>">
                    					</div>
                    					<div class="col-span-2">
-                       					<label for="organizador" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                       						Organizador
+                       					<label for="apellido-edit" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                       						Apellido
                        					</label>
-                       					<input type="text" name="organizador-edit" id="organizador-edit" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                       						placeholder="Escriba el nombre del Organizador" required="" value="">
+                       					<input type="text" name="apellido-edit" id="apellido-edit" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                       						placeholder="Escriba el nombre del Organizador" required="" value="<%= jugador.getApellido()%>">
                        				</div>
                    					<div class="col-span-2 sm:col-span-1">
-                       					<label for="fecha-inicio" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                       						Fecha de inicio
+                       					<label for="sexo-inicio" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                       						Sexo
                        					</label>
-                       					<input name="inicio-edit" type="date" id="inicio-edit" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
-                       					required="" value="">
+                       					<select name="sexo-edit" id="sexo-edit" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+											<option selected value="<%= jugador.getSexo() %>"><%= jugador.getSexo() %></option>
+										  	<option value="M">M</option>
+										  	<option value="F">F</option>
+										</select>
                    					</div>
-				                    <div class="col-span-2 sm:col-span-1">
-				                        <label for="fecha-fin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-				                        	Fecha de Fin
-				                        </label>
-				                        <input name="fin-edit" type="date" id="fin-edit" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
-				                        required="" value="">
-				                    </div>
 				                    <div class="col-span-2">
-				                        <label for="lugar" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-				                        	Lugar
+				                        <label for="edad-edit" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+				                        	Edad
 				                        </label>
-				                        <input type="text" name="lugar-edit" id="lugar-edit" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" 
-				                        placeholder="Escriba la dirección donde se realizara el evento" required="" value="">
+				                        <input type="number" name="edad-edit" id="edad-edit" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" 
+				                        	required="" value="<%= jugador.getEdad() %>">
 				                    </div>
                					</div>
 				                <button type="submit" class="text-white inline-flex items-center bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
@@ -285,6 +288,9 @@
 				        </div>
 				    </div>
 				</div>
+			<%
+				}
+			%>
 			</tbody>
 		</table>
 	</div>
@@ -296,7 +302,7 @@
 	            <!-- Modal header -->
 	            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
 	                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-	                    Crear nuevo evento
+	                    Crear nuevo jugador
 	                </h3>
 	                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="agregar-modal">
 	                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
@@ -306,28 +312,39 @@
 	                </button>
 	            </div>
 	            <!-- Modal body -->	
-	            <form class="p-4 md:p-5" action="SvAddEvent" method="POST">
+	            <form class="p-4 md:p-5" action="SvAddPlayer" method="POST">
 	                <div class="grid gap-4 mb-4 grid-cols-2">
 	                    <div class="col-span-2">
-	                        <label for="nombre" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
-	                        <input type="text" name="nombre" id="nombre" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Escriba el nombre del evento" required="">
+	                        <label for="nombre" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+	                        	Nombre
+	                        </label>
+	                        <input type="text" name="nombre" id="nombre" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" 
+	                        	placeholder="Escriba el nombre del jugador" required="">
 	                    </div>
 	                    <div class="col-span-2">
-	                        <label for="organizador" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Organizador</label>
-	                        <input type="text" name="organizador" id="organizador" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Escriba el nombre del Organizador" required="">
+	                        <label for="apellido" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+	                        	Apellido
+	                        </label>
+	                        <input type="text" name="apellido" id="apellido" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" 
+	                        placeholder="Escriba el apellido del jugador" required="">
 
 	                    </div>
 	                    <div class="col-span-2 sm:col-span-1">
-	                        <label for="fecha-inicio" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fecha de inicio</label>
-	                        <input name="inicio" type="date" id="inicio" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
-	                    </div>
-	                    <div class="col-span-2 sm:col-span-1">
-	                        <label for="fecha-fin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fecha de Fin</label>
-	                        <input name="fin" type="date" id="fin" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
+	                        <label for="sexo" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+	                        	Sexo
+	                        </label>
+	                        <select name="sexo" id="sexo" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
+								<option selected>Seleccione un sexo</option>
+								<option value="M">M</option>
+								<option value="F">F</option>
+							</select>
 	                    </div>
 	                    <div class="col-span-2">
-	                        <label for="lugar" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Lugar</label>
-	                        <input type="text" name="lugar" id="lugar" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Escriba la dirección donde se realizara el evento" required="">
+	                        <label for="edad" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+	                        	Edad
+	                        </label>
+	                        <input type="number" name="edad" id="edad" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" 
+	                        	placeholder="Escriba la edad del jugador" required="">
 	                    </div>
 	                </div>
 	                <button type="submit" class="text-white inline-flex items-center bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
