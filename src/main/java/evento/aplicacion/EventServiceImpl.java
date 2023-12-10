@@ -51,7 +51,5 @@ public class EventServiceImpl implements EventService{
 	@Override
 	public List<Evento> getAllEvents() {
 		return eventRepository.obtenerTodos();
-	}
-
-	
+	}	
 }
