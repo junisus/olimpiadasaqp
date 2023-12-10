@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="java.util.List"%>
+<%@ page import="encuentros.dominio.Encuentro"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -179,71 +181,10 @@
 		</div>
 		
 		<div class="flex flex-wrap">
-			<div class="max-w-s m-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-	    		<div>
-	    			<div class="flex flex-col items-center bg-white border border-gray-200 rounded-t shadow md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-	        			<div class="flex flex-col justify-between p-4 leading-normal w-48">
-	        				<h5 class="text-center mb-2 text-l font-bold tracking-tight text-gray-900 dark:text-white">
-	        					Nombre del primer equipo
-	        				</h5>
-	        				<h5 class="text-center mb-2 text-4xl tracking-tight text-gray-900 dark:text-white">
-	        					2
-	        				</h5>
-	    				</div>
-	    		
-	    				<div class="flex flex-col justify-between">
-	        				<h5 class="text-center text-xl tracking-tight text-gray-900 dark:text-white">
-	        					VS
-	        				</h5>
-	    				</div>
-	    		
-	    				<div class="flex flex-col justify-between p-4 leading-normal w-48">
-	        				<h5 class="text-center mb-2 text-l font-bold tracking-tight text-gray-900 dark:text-white">
-	        					NOMBRE DEL SEGUNDO EQUIPO
-	        			</h5>
-	        				<h5 class="text-center mb-2 text-4xl tracking-tight text-gray-900 dark:text-white">
-	        					5
-	        			</h5>
-	    			</div>
-	        	</div>
-	        	<div>
-	        		<div class="flex flex-col justify-between md:flex-row bg-white border-gray-200 rounded-b shadow md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-	        			<div class="flex flex-col justify-start items-start pt-8 pl-8 leading-normal">
-	        				<p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-	        					<b>Fecha: </b> 12/20/2023 <br></br>
-	        					<b>Hora: </b> 16:30 <br></br>
-	        					<b>Lugar: </b> Sector A-14 <br></br>
-	        				</p>
-	    				</div>
-	    		
-	    				<div class="flex flex-col justify-center items-center md:justify-end md:items-end p-4 leading-normal">
-	        				<button type="button" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800">
-	        					Jugadores
-							</button>
-	        		
-	        				<div class="flex">
-	        					<span class="cursor-pointer p-3 mr-5 text-yellow-900 rounded-lg dark:text-white hover:bg-yellow-100 dark:hover:bg-yellow-700 group">
-									<svg class="flex-shrink-0 w-4 h-4 text-yellow-500 transition duration-75 dark:text-yellow-400 group-hover:text-yellow-900 dark:group-hover:text-white"
-										aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 21 21">
-    									<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-											d="M7.418 17.861 1 20l2.139-6.418m4.279 4.279 10.7-10.7a3.027 3.027 0 0 0-2.14-5.165c-.802 0-1.571.319-2.139.886l-10.7 10.7m4.279 4.279-4.279-4.279m2.139 2.14 7.844-7.844m-1.426-2.853 4.279 4.279" />
-  									</svg>
-								</span>
-					
-					
-	        					<span class="cursor-pointer p-3 text-red-900 rounded-lg dark:text-white hover:bg-red-100 dark:hover:bg-red-700 group">
-									<svg class="flex-shrink-0 w-4 h-4 text-red-500 transition duration-75 dark:text-red-400 group-hover:text-red-900 dark:group-hover:text-white"
-										aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
-    									<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-											d="M1 5h16M7 8v8m4-8v8M7 1h4a1 1 0 0 1 1 1v3H6V2a1 1 0 0 1 1-1ZM3 5h12v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5Z" />
-  									</svg>
-								</span>
-	        				</div>
-	    				</div>
-	        		</div>
-	    		</div>
-			</div>
-		</div>
+			<%	List<Encuentro> encuentros = (List<Encuentro>) request.getAttribute("encuentros");
+        		
+				for (Encuentro encuentro : encuentros) {
+        	%>
 		<div class="max-w-s m-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
 	    		<div>
 	    			<div class="flex flex-col items-center bg-white border border-gray-200 rounded-t shadow md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
@@ -254,11 +195,14 @@
 	        				<h5 class="text-center mb-2 text-4xl tracking-tight text-gray-900 dark:text-white">
 	        					2
 	        				</h5>
+	        				<button type="button" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800">
+	        					Jugadores
+							</button>
 	    				</div>
 	    		
 	    				<div class="flex flex-col justify-between">
-	        				<h5 class="text-center text-xl tracking-tight text-gray-900 dark:text-white">
-	        					VS
+	        				<h5 class="text-center text-2xl tracking-tight text-gray-900 dark:text-white">
+	        					:
 	        				</h5>
 	    				</div>
 	    		
@@ -269,6 +213,9 @@
 	        				<h5 class="text-center mb-2 text-4xl tracking-tight text-gray-900 dark:text-white">
 	        					5
 	        			</h5>
+	        			<button type="button" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800">
+	        					Jugadores
+							</button>
 	    			</div>
 	        	</div>
 	        	<div>
@@ -281,11 +228,7 @@
 	        				</p>
 	    				</div>
 	    		
-	    				<div class="flex flex-col justify-center items-center md:justify-end md:items-end p-4 leading-normal">
-	        				<button type="button" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800">
-	        					Jugadores
-							</button>
-	        		
+	    				<div class="flex flex-col justify-center items-center md:justify-end md:items-end p-4 leading-normal">	        		
 	        				<div class="flex">
 	        					<span class="cursor-pointer p-3 mr-5 text-yellow-900 rounded-lg dark:text-white hover:bg-yellow-100 dark:hover:bg-yellow-700 group">
 									<svg class="flex-shrink-0 w-4 h-4 text-yellow-500 transition duration-75 dark:text-yellow-400 group-hover:text-yellow-900 dark:group-hover:text-white"
@@ -308,201 +251,7 @@
 	        		</div>
 	    		</div>
 			</div>
-		</div>
-		<div class="max-w-s m-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-	    		<div>
-	    			<div class="flex flex-col items-center bg-white border border-gray-200 rounded-t shadow md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-	        			<div class="flex flex-col justify-between p-4 leading-normal w-48">
-	        				<h5 class="text-center mb-2 text-l font-bold tracking-tight text-gray-900 dark:text-white">
-	        					Nombre del primer equipo
-	        				</h5>
-	        				<h5 class="text-center mb-2 text-4xl tracking-tight text-gray-900 dark:text-white">
-	        					2
-	        				</h5>
-	    				</div>
-	    		
-	    				<div class="flex flex-col justify-between">
-	        				<h5 class="text-center text-xl tracking-tight text-gray-900 dark:text-white">
-	        					VS
-	        				</h5>
-	    				</div>
-	    		
-	    				<div class="flex flex-col justify-between p-4 leading-normal w-48">
-	        				<h5 class="text-center mb-2 text-l font-bold tracking-tight text-gray-900 dark:text-white">
-	        					NOMBRE DEL SEGUNDO EQUIPO
-	        			</h5>
-	        				<h5 class="text-center mb-2 text-4xl tracking-tight text-gray-900 dark:text-white">
-	        					5
-	        			</h5>
-	    			</div>
-	        	</div>
-	        	<div>
-	        		<div class="flex flex-col justify-between md:flex-row bg-white border-gray-200 rounded-b shadow md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-	        			<div class="flex flex-col justify-start items-start pt-8 pl-8 leading-normal">
-	        				<p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-	        					<b>Fecha: </b> 12/20/2023 <br></br>
-	        					<b>Hora: </b> 16:30 <br></br>
-	        					<b>Lugar: </b> Sector A-14 <br></br>
-	        				</p>
-	    				</div>
-	    		
-	    				<div class="flex flex-col justify-center items-center md:justify-end md:items-end p-4 leading-normal">
-	        				<button type="button" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800">
-	        					Jugadores
-							</button>
-	        		
-	        				<div class="flex">
-	        					<span class="cursor-pointer p-3 mr-5 text-yellow-900 rounded-lg dark:text-white hover:bg-yellow-100 dark:hover:bg-yellow-700 group">
-									<svg class="flex-shrink-0 w-4 h-4 text-yellow-500 transition duration-75 dark:text-yellow-400 group-hover:text-yellow-900 dark:group-hover:text-white"
-										aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 21 21">
-    									<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-											d="M7.418 17.861 1 20l2.139-6.418m4.279 4.279 10.7-10.7a3.027 3.027 0 0 0-2.14-5.165c-.802 0-1.571.319-2.139.886l-10.7 10.7m4.279 4.279-4.279-4.279m2.139 2.14 7.844-7.844m-1.426-2.853 4.279 4.279" />
-  									</svg>
-								</span>
-					
-					
-	        					<span class="cursor-pointer p-3 text-red-900 rounded-lg dark:text-white hover:bg-red-100 dark:hover:bg-red-700 group">
-									<svg class="flex-shrink-0 w-4 h-4 text-red-500 transition duration-75 dark:text-red-400 group-hover:text-red-900 dark:group-hover:text-white"
-										aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
-    									<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-											d="M1 5h16M7 8v8m4-8v8M7 1h4a1 1 0 0 1 1 1v3H6V2a1 1 0 0 1 1-1ZM3 5h12v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5Z" />
-  									</svg>
-								</span>
-	        				</div>
-	    				</div>
-	        		</div>
-	    		</div>
-			</div>
-		</div>
-		<div class="max-w-s m-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-	    		<div>
-	    			<div class="flex flex-col items-center bg-white border border-gray-200 rounded-t shadow md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-	        			<div class="flex flex-col justify-between p-4 leading-normal w-48">
-	        				<h5 class="text-center mb-2 text-l font-bold tracking-tight text-gray-900 dark:text-white">
-	        					Nombre del primer equipo
-	        				</h5>
-	        				<h5 class="text-center mb-2 text-4xl tracking-tight text-gray-900 dark:text-white">
-	        					2
-	        				</h5>
-	    				</div>
-	    		
-	    				<div class="flex flex-col justify-between">
-	        				<h5 class="text-center text-xl tracking-tight text-gray-900 dark:text-white">
-	        					VS
-	        				</h5>
-	    				</div>
-	    		
-	    				<div class="flex flex-col justify-between p-4 leading-normal w-48">
-	        				<h5 class="text-center mb-2 text-l font-bold tracking-tight text-gray-900 dark:text-white">
-	        					NOMBRE DEL SEGUNDO EQUIPO
-	        			</h5>
-	        				<h5 class="text-center mb-2 text-4xl tracking-tight text-gray-900 dark:text-white">
-	        					5
-	        			</h5>
-	    			</div>
-	        	</div>
-	        	<div>
-	        		<div class="flex flex-col justify-between md:flex-row bg-white border-gray-200 rounded-b shadow md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-	        			<div class="flex flex-col justify-start items-start pt-8 pl-8 leading-normal">
-	        				<p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-	        					<b>Fecha: </b> 12/20/2023 <br></br>
-	        					<b>Hora: </b> 16:30 <br></br>
-	        					<b>Lugar: </b> Sector A-14 <br></br>
-	        				</p>
-	    				</div>
-	    		
-	    				<div class="flex flex-col justify-center items-center md:justify-end md:items-end p-4 leading-normal">
-	        				<button type="button" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800">
-	        					Jugadores
-							</button>
-	        		
-	        				<div class="flex">
-	        					<span class="cursor-pointer p-3 mr-5 text-yellow-900 rounded-lg dark:text-white hover:bg-yellow-100 dark:hover:bg-yellow-700 group">
-									<svg class="flex-shrink-0 w-4 h-4 text-yellow-500 transition duration-75 dark:text-yellow-400 group-hover:text-yellow-900 dark:group-hover:text-white"
-										aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 21 21">
-    									<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-											d="M7.418 17.861 1 20l2.139-6.418m4.279 4.279 10.7-10.7a3.027 3.027 0 0 0-2.14-5.165c-.802 0-1.571.319-2.139.886l-10.7 10.7m4.279 4.279-4.279-4.279m2.139 2.14 7.844-7.844m-1.426-2.853 4.279 4.279" />
-  									</svg>
-								</span>
-					
-					
-	        					<span class="cursor-pointer p-3 text-red-900 rounded-lg dark:text-white hover:bg-red-100 dark:hover:bg-red-700 group">
-									<svg class="flex-shrink-0 w-4 h-4 text-red-500 transition duration-75 dark:text-red-400 group-hover:text-red-900 dark:group-hover:text-white"
-										aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
-    									<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-											d="M1 5h16M7 8v8m4-8v8M7 1h4a1 1 0 0 1 1 1v3H6V2a1 1 0 0 1 1-1ZM3 5h12v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5Z" />
-  									</svg>
-								</span>
-	        				</div>
-	    				</div>
-	        		</div>
-	    		</div>
-			</div>
-		</div>
-		<div class="max-w-s m-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-	    		<div>
-	    			<div class="flex flex-col items-center bg-white border border-gray-200 rounded-t shadow md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-	        			<div class="flex flex-col justify-between p-4 leading-normal w-48">
-	        				<h5 class="text-center mb-2 text-l font-bold tracking-tight text-gray-900 dark:text-white">
-	        					Nombre del primer equipo
-	        				</h5>
-	        				<h5 class="text-center mb-2 text-4xl tracking-tight text-gray-900 dark:text-white">
-	        					2
-	        				</h5>
-	    				</div>
-	    		
-	    				<div class="flex flex-col justify-between">
-	        				<h5 class="text-center text-xl tracking-tight text-gray-900 dark:text-white">
-	        					VS
-	        				</h5>
-	    				</div>
-	    		
-	    				<div class="flex flex-col justify-between p-4 leading-normal w-48">
-	        				<h5 class="text-center mb-2 text-l font-bold tracking-tight text-gray-900 dark:text-white">
-	        					NOMBRE DEL SEGUNDO EQUIPO
-	        			</h5>
-	        				<h5 class="text-center mb-2 text-4xl tracking-tight text-gray-900 dark:text-white">
-	        					5
-	        			</h5>
-	    			</div>
-	        	</div>
-	        	<div>
-	        		<div class="flex flex-col justify-between md:flex-row bg-white border-gray-200 rounded-b shadow md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-	        			<div class="flex flex-col justify-start items-start pt-8 pl-8 leading-normal">
-	        				<p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-	        					<b>Fecha: </b> 12/20/2023 <br></br>
-	        					<b>Hora: </b> 16:30 <br></br>
-	        					<b>Lugar: </b> Sector A-14 <br></br>
-	        				</p>
-	    				</div>
-	    		
-	    				<div class="flex flex-col justify-center items-center md:justify-end md:items-end p-4 leading-normal">
-	        				<button type="button" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800">
-	        					Jugadores
-							</button>
-	        		
-	        				<div class="flex">
-	        					<span class="cursor-pointer p-3 mr-5 text-yellow-900 rounded-lg dark:text-white hover:bg-yellow-100 dark:hover:bg-yellow-700 group">
-									<svg class="flex-shrink-0 w-4 h-4 text-yellow-500 transition duration-75 dark:text-yellow-400 group-hover:text-yellow-900 dark:group-hover:text-white"
-										aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 21 21">
-    									<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-											d="M7.418 17.861 1 20l2.139-6.418m4.279 4.279 10.7-10.7a3.027 3.027 0 0 0-2.14-5.165c-.802 0-1.571.319-2.139.886l-10.7 10.7m4.279 4.279-4.279-4.279m2.139 2.14 7.844-7.844m-1.426-2.853 4.279 4.279" />
-  									</svg>
-								</span>
-					
-					
-	        					<span class="cursor-pointer p-3 text-red-900 rounded-lg dark:text-white hover:bg-red-100 dark:hover:bg-red-700 group">
-									<svg class="flex-shrink-0 w-4 h-4 text-red-500 transition duration-75 dark:text-red-400 group-hover:text-red-900 dark:group-hover:text-white"
-										aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
-    									<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-											d="M1 5h16M7 8v8m4-8v8M7 1h4a1 1 0 0 1 1 1v3H6V2a1 1 0 0 1 1-1ZM3 5h12v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5Z" />
-  									</svg>
-								</span>
-	        				</div>
-	    				</div>
-	        		</div>
-	    		</div>
-			</div>
+			<%} %>
 		</div>
 		
 		<div id="eliminar-modal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">

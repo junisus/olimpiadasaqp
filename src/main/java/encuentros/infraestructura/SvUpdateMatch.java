@@ -31,19 +31,21 @@ public class SvUpdateMatch extends HttpServlet {
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int id = Integer.parseInt(request.getParameter("id-encuentro"));
-		int idEquipoA = Integer.parseInt(request.getParameter("id-equipo-A"));
-		int idEquipoB = Integer.parseInt(request.getParameter("id-equipo-B"));
-		String fecha = request.getParameter("fecha");
-		Time hora = Time.valueOf(request.getParameter("hora"));
-		String lugar = request.getParameter("lugar");
+		int id = Integer.parseInt(request.getParameter("id-encuentro-edit"));
+		int idEquipoA = Integer.parseInt(request.getParameter("id-equipo-A-edit"));
+		int idEquipoB = Integer.parseInt(request.getParameter("id-equipo-B-edit"));
+		String fecha = request.getParameter("fecha-edit");
+		Time hora = Time.valueOf(request.getParameter("hora-edit"));
+		String lugar = request.getParameter("lugar-edit");
+		int resA = Integer.parseInt(request.getParameter("resultado-A-edit"));
+		int resB = Integer.parseInt(request.getParameter("resultado-B-edit"));
 		
 	    SimpleDateFormat formatoEntrada = new SimpleDateFormat("yyyy-MM-dd");
 	    
 	    try {
 	        Date fechaConvertida = new Date(formatoEntrada.parse(fecha).getTime());
 
-	        matchService.update(id, idEquipoA, idEquipoB, fechaConvertida, hora, lugar);
+	        matchService.update(id, idEquipoA, idEquipoB, fechaConvertida, hora, lugar, resA, resB);
 	        response.sendRedirect("./encuentros");
 	    } catch (ParseException e) {
 	        e.printStackTrace();

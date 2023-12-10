@@ -32,6 +32,12 @@ public class Encuentro {
 	
 	@Column(name="lugar", nullable = true, unique = false)
 	private String lugar;
+	
+	@Column(name="resultado_A", nullable = true, unique = false)
+	private int resultadoA;
+	
+	@Column(name="resultado_B", nullable = true, unique = false)
+	private int resultadoB;
 
 	public int getId() {
 		return id;
@@ -79,5 +85,21 @@ public class Encuentro {
 
 	public void setLugar(String lugar) {
 		this.lugar = lugar;
+	}
+
+	public int getResultadoA() {
+		return resultadoA;
+	}
+
+	public void setResultadoA(int resultadoA) {
+		this.resultadoA = resultadoA;
+	}
+
+	public int getResultadoB() {
+		return resultadoB;
+	}
+
+	public void setResultadoB(int resultadoB) {
+		this.resultadoB = resultadoB;
 	}
 }

@@ -36,13 +36,15 @@ public class SvAddMatch extends HttpServlet {
 		String fecha = request.getParameter("fecha");
 		Time hora = Time.valueOf(request.getParameter("hora"));
 		String lugar = request.getParameter("lugar");
+		int resA = Integer.parseInt(request.getParameter("resultado-A"));
+		int resB = Integer.parseInt(request.getParameter("resultado-B"));
 		
 	    SimpleDateFormat formatoEntrada = new SimpleDateFormat("yyyy-MM-dd");
 	    
 	    try {
 	        Date fechaConvertida = new Date(formatoEntrada.parse(fecha).getTime());
 
-	        matchService.save(idEquipoA, idEquipoB, fechaConvertida, hora, lugar);
+	        matchService.save(idEquipoA, idEquipoB, fechaConvertida, hora, lugar, resA, resB);
 	        response.sendRedirect("./encuentros");
 	    } catch (ParseException e) {
 	        e.printStackTrace();

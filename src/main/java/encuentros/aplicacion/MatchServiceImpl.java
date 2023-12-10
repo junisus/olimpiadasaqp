@@ -16,13 +16,15 @@ public class MatchServiceImpl implements MatchService{
 	}
 
 	@Override
-	public void save(int idEquipoA, int idEquipoB, Date fecha, Time hora, String lugar) {
+	public void save(int idEquipoA, int idEquipoB, Date fecha, Time hora, String lugar, int resA, int resB) {
 		Encuentro encuentro = new Encuentro();
 		encuentro.setIdEquipoA(idEquipoA);
 		encuentro.setIdEquipoB(idEquipoB);
 		encuentro.setFecha(fecha);
 		encuentro.setHora(hora);
 		encuentro.setLugar(lugar);
+		encuentro.setResultadoA(resA);
+		encuentro.setResultadoB(resB);
 		matchRepository.guardar(encuentro);
 	}
 
@@ -32,7 +34,7 @@ public class MatchServiceImpl implements MatchService{
 	}
 
 	@Override
-	public void update(int id, int idEquipoA, int idEquipoB, Date fecha, Time hora, String lugar) {
+	public void update(int id, int idEquipoA, int idEquipoB, Date fecha, Time hora, String lugar, int resA, int resB) {
 		Encuentro encuentro = new Encuentro();
 		encuentro.setId(id);
 		encuentro.setIdEquipoA(idEquipoA);
@@ -40,6 +42,8 @@ public class MatchServiceImpl implements MatchService{
 		encuentro.setFecha(fecha);
 		encuentro.setHora(hora);
 		encuentro.setLugar(lugar);
+		encuentro.setResultadoA(resA);
+		encuentro.setResultadoB(resB);
 		matchRepository.actualizar(encuentro);
 	}
 
