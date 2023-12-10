@@ -4,10 +4,7 @@
 		<jta-data-source>java:/jdbc/dbolimpiadasaqp</jta-data-source>
 		<class>usuario.dominio.Usuario</class>
 		<class>evento.dominio.Evento</class>
-<<<<<<< HEAD
 		<class>encuentros.dominio.Encuentro</class>
-=======
 		<class>equipo.dominio.Equipo</class>
->>>>>>> equipos
 	</persistence-unit>
 </persistence>

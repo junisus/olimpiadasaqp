@@ -18,10 +18,10 @@ public class Encuentro {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name="id_equipo_A", nullable = true, unique = false)
+	@Column(name="id_equipo_a", nullable = true, unique = false)
 	private int IdEquipoA;
 	
-	@Column(name="id_equipoB", nullable = true, unique = false)
+	@Column(name="id_equipo_b", nullable = true, unique = false)
 	private int IdEquipoB;
 	
 	@Column(name="fecha", nullable = true, unique = false)
@@ -33,10 +33,10 @@ public class Encuentro {
 	@Column(name="lugar", nullable = true, unique = false)
 	private String lugar;
 	
-	@Column(name="resultado_A", nullable = true, unique = false)
+	@Column(name="resultado_a", nullable = true, unique = false)
 	private int resultadoA;
 	
-	@Column(name="resultado_B", nullable = true, unique = false)
+	@Column(name="resultado_b", nullable = true, unique = false)
 	private int resultadoB;
 
 	public int getId() {

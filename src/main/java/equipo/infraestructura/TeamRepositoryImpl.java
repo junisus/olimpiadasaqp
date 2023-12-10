@@ -58,6 +58,7 @@ public class TeamRepositoryImpl implements TeamRepository{
 			List<Equipo> listaEquipos = em.createQuery("SELECT e FROM Equipo e", Equipo.class).getResultList();
 			return listaEquipos;
 		} catch (Exception e) {
+			e.printStackTrace();
 			return null;
 		} finally {
 			em.close();

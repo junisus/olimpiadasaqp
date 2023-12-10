@@ -55,9 +55,11 @@ public class MatchRepositoryImpl implements MatchRepository{
 		EntityManager em = emf.createEntityManager();
 
 		try {
+			System.out.println("*** BUSCANDO EN JPA ***");
 			List<Encuentro> listaEncuentros = em.createQuery("SELECT e FROM Encuentro e", Encuentro.class).getResultList();
 			return listaEncuentros;
 		} catch (Exception e) {
+			System.out.println("*** NO ENCONTRO EN JPA ***");
 			return null;
 		} finally {
 			em.close();
