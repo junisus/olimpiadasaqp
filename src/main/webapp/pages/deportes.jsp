@@ -233,8 +233,8 @@
                 <span class="sr-only">Close modal</span>
             </button>
             <div class="p-4 md:p-5 text-center">
-            <form action="SvDeleteEvent" method="POST">
-            	<input name="id-evento" type="hidden" id="id-evento" value="<%= deporte.getId() %>">
+            <form action="SvDeleteSport" method="POST">
+            	<input name="id-deporte" type="hidden" id="id-deporte" value="<%= deporte.getId() %>">
                 <img class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200"
 						aria-hidden="true" src="img/icons/warning-icon.png">
                 <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">¿Seguro que quieres eliminar este deporte?</h3>
@@ -266,7 +266,7 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <form class="p-4 md:p-5" action="SvUpdateEvent" method="POST">
+            <form class="p-4 md:p-5" action="SvUpdateSport" method="POST">
                 <input name="id-edit" type="hidden" id="id-edit" value="<%= deporte.getId() %>">
                 <div class="grid gap-4 mb-4 grid-cols-2">
                     <div class="col-span-2">
@@ -330,7 +330,7 @@
             
             
             <!-- Modal body -->
-            <form class="p-4 md:p-5" action="SvAddEvent" method="POST">
+            <form class="p-4 md:p-5" action="SvAddSport" method="POST">
                 <div class="grid gap-4 mb-4 grid-cols-2">
                     <div class="col-span-2">
                         <label for="nombre" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
@@ -338,7 +338,7 @@
                     </div>
                     <div class="col-span-2">
                         <label for="descripcion" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Descripcion</label>
-                        <input type="text" name="Descripcion" id="descripcion" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Escriba el nombre del Descripcion" required="">
+                        <input type="text" name="descripcion" id="descripcion" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Escriba el nombre del Descripcion" required="">
                     
                     </div>
 

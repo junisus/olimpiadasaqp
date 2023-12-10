@@ -33,13 +33,12 @@ public class SvAddSport extends HttpServlet {
         String nombre = request.getParameter("nombre");
         String descripcion = request.getParameter("descripcion");
         
+        
         if (nombre != null && descripcion != null) {
 
-            System.out.println("Nombre: " + nombre);
-            System.out.println("Descripción: " + descripcion);
-            
+            sportService.save(nombre, descripcion);
            
-            response.sendRedirect("./pagina-de-exito.jsp");
+            response.sendRedirect("./deportes");
         } else {
             
             response.getWriter().println("Error: Falta nombre o descripción");

@@ -36,7 +36,7 @@ public class SvUpdateSport extends HttpServlet {
         
         try {
             sportService.update(id, nombre, descripcion);
-            response.sendRedirect("./eventos");
+            response.sendRedirect("./deportes");
         } catch (Exception e) {
             e.printStackTrace();
         }
