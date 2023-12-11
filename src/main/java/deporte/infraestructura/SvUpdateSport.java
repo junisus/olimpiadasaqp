@@ -1,9 +1,6 @@
 package deporte.infraestructura;
 
 import java.io.IOException;
-import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;

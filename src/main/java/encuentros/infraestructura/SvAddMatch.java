@@ -3,7 +3,6 @@ package encuentros.infraestructura;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.Time;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 

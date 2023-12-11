@@ -67,5 +67,4 @@ public class SvUpdateMatch extends HttpServlet {
 	        e.printStackTrace();
 	    }
 	}
-
 }

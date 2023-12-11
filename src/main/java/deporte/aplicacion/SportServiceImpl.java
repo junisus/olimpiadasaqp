@@ -1,6 +1,5 @@
 package deporte.aplicacion;
 
-import java.sql.Date;
 import java.util.List;
 
 import deporte.dominio.Deporte;

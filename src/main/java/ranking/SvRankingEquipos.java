@@ -43,14 +43,12 @@ public class SvRankingEquipos extends HttpServlet{
 		List<Encuentro> encuentros = matchService.getAllMatch();
 		List<Equipo> equipos = teamService.getAllTeams();
 
-		// Calcula los puntos totales de cada equipo
 		Map<Equipo, Integer> puntosTotales = new HashMap<>();
 		for (Equipo equipo : equipos) {
 			int puntos = calcularPuntosTotales(equipo, encuentros);
 			puntosTotales.put(equipo, puntos);
 		}
 
-		// Ordena los equipos por puntos totales en orden descendente
 		equipos.sort((Equipo e1, Equipo e2) -> Integer.compare(puntosTotales.get(e2), puntosTotales.get(e1)));
 
 		request.setAttribute("equipos", equipos);
@@ -63,26 +61,19 @@ public class SvRankingEquipos extends HttpServlet{
 
 		for (Encuentro encuentro : encuentros) {
 			if (encuentro.getIdEquipoA() == equipo.getId()) {
-				// El equipo es el equipo A en este encuentro
 				if (encuentro.getResultadoA() > encuentro.getResultadoB()) {
-					// El equipo A ganó el encuentro
 					puntosTotales += 3;
 				} else if (encuentro.getResultadoA() == encuentro.getResultadoB()) {
-					// El encuentro terminó en empate
 					puntosTotales += 1;
 				}
 			} else if (encuentro.getIdEquipoB() == equipo.getId()) {
-				// El equipo es el equipo B en este encuentro
 				if (encuentro.getResultadoB() > encuentro.getResultadoA()) {
-					// El equipo B ganó el encuentro
 					puntosTotales += 3;
 				} else if (encuentro.getResultadoB() == encuentro.getResultadoA()) {
-					// El encuentro terminó en empate
 					puntosTotales += 1;
 				}
 			}
 		}
-
 		return puntosTotales;
 	}
 }
