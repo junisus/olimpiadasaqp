@@ -14,7 +14,7 @@ document.getElementById('authentication-modal').addEventListener('submit', funct
 			var response = xhr.responseText;
 			
 			if (response === 'login-successful') {
-				window.location.href = 'index.jsp';
+				window.location.href = 'eventos';
 				
 			} else if (response === 'login-error') {
 				document.querySelector('[data-modal-toggle="alert-error-login-modal"]').click();

@@ -23,8 +23,7 @@
                			<path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
             		</svg>
 				</button>
-				<a href="https://flowbite.com" class="flex ms-2 md:me-24">
-					<img src="https://flowbite.com/docs/images/logo.svg" class="h-8 me-3" alt="FlowBite Logo" />
+				<a href="index.jsp" class="flex ms-2 md:me-24">
 					<span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
 						Olimpiadas AQP
 					</span>
@@ -68,7 +67,7 @@
 	aria-label="Sidebar">
 	<div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
 		<ul class="space-y-2 font-medium">
-			<li><a href="../eventos" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+			<li><a href="eventos" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
 				<svg class="flex-shrink-0 w-5 h-5 text-gray-500 group-hover:text-gray-900 transition duration-75 dark:text-red-400 group-text-red-900 dark:group-hover:text-white"
 					aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
     				<path fill="currentColor"
@@ -78,7 +77,7 @@
   					Eventos
   				</span></a>
   			</li>
-			<li><a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+			<li><a href="deportes" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
 				<svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
 					aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
     				<path fill-rule="evenodd" d="M10 0a10 10 0 1 0 10 10A10.009 10.009 0 0 0 10 0Zm6.613 4.614a8.523 8.523 0 0 1 1.93 5.32 20.094 20.094 0 0 0-5.949-.274c-.059-.149-.122-.292-.184-.441a23.879 23.879 0 0 0-.566-1.239 11.41 11.41 0 0 0 4.769-3.366ZM8 1.707a8.821 8.821 0 0 1 2-.238 8.5 8.5 0 0 1 5.664 2.152 9.608 9.608 0 0 1-4.476 3.087A45.758 45.758 0 0 0 8 1.707ZM1.642 8.262a8.57 8.57 0 0 1 4.73-5.981A53.998 53.998 0 0 1 9.54 7.222a32.078 32.078 0 0 1-7.9 1.04h.002Zm2.01 7.46a8.51 8.51 0 0 1-2.2-5.707v-.262a31.64 31.64 0 0 0 8.777-1.219c.243.477.477.964.692 1.449-.114.032-.227.067-.336.1a13.569 13.569 0 0 0-6.942 5.636l.009.003ZM10 18.556a8.508 8.508 0 0 1-5.243-1.8 11.717 11.717 0 0 1 6.7-5.332.509.509 0 0 1 .055-.02 35.65 35.65 0 0 1 1.819 6.476 8.476 8.476 0 0 1-3.331.676Zm4.772-1.462A37.232 37.232 0 0 0 13.113 11a12.513 12.513 0 0 1 5.321.364 8.56 8.56 0 0 1-3.66 5.73h-.002Z" clip-rule="evenodd" />
@@ -87,7 +86,7 @@
   					Deportes
   				</span></a>
   			</li>
-			<li><a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+			<li><a href="categorias" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
 				<svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
 					aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
     				<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"
@@ -97,7 +96,7 @@
   					Categorías
   				</span></a>
   			</li>
-			<li><a href="#" class="flex items-center p-2 text-red-900 rounded-lg dark:text-white bg-red-100 dark:bg-red-700 group">
+			<li><a href="equipos" class="flex items-center p-2 text-red-900 rounded-lg dark:text-white bg-red-100 dark:bg-red-700 group">
 				<svg class="flex-shrink-0 w-5 h-5 transition duration-75 dark:text-red-400 group-text-red-900 dark:group-hover:text-white"
 					aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
     				<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"
@@ -107,7 +106,7 @@
   					Equipos
   				</span></a>
 			</li>
-			<li><a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+			<li><a href="encuentros" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
 				<svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
 					aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 18">
     				<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"
@@ -117,7 +116,7 @@
   					Encuentros
   				</span></a>
   			</li>
-			<li><a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+			<li><a href="ranking" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
 				<svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
 					aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16">
     				<path stroke="currentColor" stroke-linecap="round"
@@ -126,15 +125,6 @@
   				<span class="flex-1 ms-3 whitespace-nowrap">
   					Ranking de equipos
   				</span></a>
-			</li>
-			<li><a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-				<svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-					aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16">
-    				<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M1 1v14h16m0-9-3-2-3 5-3-2-3 4" />
- 				 </svg>
- 				 <span class="flex-1 ms-3 whitespace-nowrap">
- 				 	Ranking de jugadores
-				</span></a>
 			</li>
 		</ul>
 	</div>
@@ -174,7 +164,7 @@
 						<%= equipo.getIdCategoria() %>
 					</th>
 					<td class="px-6 py-4"><%= equipo.getNombre() %></td>
-					<td class="px-6 py-4 text-blue-500 hover:text-blue-800"><a href="#">Ver jugadores</a></td>
+					<td class="px-6 py-4 text-blue-500 hover:text-blue-800"><a href="jugadores">Ver jugadores</a></td>
 					<td class="px-6 py-4">
 						<span data-modal-target="editar-<%= equipo.getId()%>" data-modal-toggle="editar-<%= equipo.getId()%>"
 							class="flex items-center justify-center p-2 text-yellow-900 rounded-lg dark:text-white hover:bg-yellow-100 dark:hover:bg-yellow-700 group">
