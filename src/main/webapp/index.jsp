@@ -21,6 +21,12 @@ x	<%@ page language="java" contentType="text/html; charset=UTF-8"
 
 			<div
 				class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+				<button data-modal-target="team-modal"data-modal-toggle="team-modal" type="button"
+    			class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+   				 Crear Equipo
+				</button>
+				
+				
 				<button data-modal-target="authentication-modal"
 					data-modal-toggle="authentication-modal" type="button"
 					class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 -medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
@@ -30,6 +36,8 @@ x	<%@ page language="java" contentType="text/html; charset=UTF-8"
 						data-modal-toggle="register-modal"
 						class="text-sm ml-6 text-blue-600 dark:text-blue-500 hover:underline">Registrate</a>
 				</div>
+				
+				
 				<button data-collapse-toggle="navbar-sticky" type="button"
 					class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
 					aria-controls="navbar-sticky" aria-expanded="false">
@@ -64,7 +72,93 @@ x	<%@ page language="java" contentType="text/html; charset=UTF-8"
 			</div>
 		</div>
 	</nav>
+	<!-- New modal for inserting team and player details -->
+<div id="team-modal" tabindex="-1" aria-hidden="true"
+    class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="relative p-4 w-full max-w-md max-h-full">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <!-- Modal header -->
+            <div
+                class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                    Insertar detalles del equipo y jugadores</h3>
+                <button type="button"
+                    class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                    data-modal-hide="team-modal">
+                    <svg class="w-3 h-3" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 14 14">
+                        <path stroke="currentColor"
+                            stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <div class="p-4 md:p-5">
+                <form class="space-y-4" action="SvInsertTeamAndPlayers" method="POST">
+                    <div>
+                        <!-- Insert team details -->
+                        <label for="team-name"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre del equipo</label>
+                        <input type="text" name="team-name" id="team-name"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                            placeholder="Nombre del equipo" required>
 
+                        <label for="sport"
+                            class="block mb-2 mt-4 text-sm font-medium text-gray-900 dark:text-white">Deporte</label>
+                        <select name="sport" id="sport"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                            required>
+                            <!-- Options for sports -->
+                            <option value="football">Fútbol</option>
+                            <option value="football">voleibol</option>
+                            <option value="basketball">Baloncesto</option>
+                            <!-- Add more options as needed -->
+                        </select>
+
+                        <label for="category"
+                            class="block mb-2 mt-4 text-sm font-medium text-gray-900 dark:text-white">Categoría</label>
+                        <select name="category" id="category"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                            required>
+                            <!-- Options for categories -->
+                            <option value="adult">Adulto</option>
+                            <option value="youth">Juvenil</option>
+                            <!-- Add more options as needed -->
+                        </select>
+
+                        <label for="event"
+                            class="block mb-2 mt-4 text-sm font-medium text-gray-900 dark:text-white">Evento</label>
+                        <select name="event" id="event"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                            required>
+                            <!-- Options for events -->
+                            <option value="tournament-1">Olimpiadas Escolares 2023</option>
+                            <option value="tournament-2">Competencias Internas Toyota</option>
+                            <!-- Add more options as needed -->
+                        </select>
+                    </div>
+
+    
+                    <!-- Example for one player -->
+                    <label for="players-data"
+            class="block mb-2 mt-4 text-sm font-medium text-gray-900 dark:text-white">Cargar documento con detalles de los 6 jugadores(nombre,apellidos,edad,sexo,)</label>
+        <input type="file" name="players-data" id="players-data" accept=".csv, .xls, .xlsx" required>
+
+                    <!-- Repeat above block for additional players -->
+
+                    <button type="submit"
+                        class="w-full text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Guardar
+                        equipo y jugadores</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+	
 	<!-- Main modal -->
 	<div id="authentication-modal" tabindex="-1" aria-hidden="true"
 		class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -199,6 +293,8 @@ x	<%@ page language="java" contentType="text/html; charset=UTF-8"
 						</div>
 					</form>
 				</div>
+				
+				
 			</div>
 		</div>
 	</div>
