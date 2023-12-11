@@ -116,7 +116,7 @@ x	<%@ page language="java" contentType="text/html; charset=UTF-8"
 								<label for="remember"
 									class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Recuerdame</label>
 							</div>
-							<a href="#"
+							<a href="pages/recuperacion-contrasena.jsp" target="_blank"
 								class="text-sm text-blue-700 hover:underline dark:text-blue-500">¿Ovidaste
 								tu contraseña?</a>
 						</div>
