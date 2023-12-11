@@ -6,5 +6,6 @@
 		<class>evento.dominio.Evento</class>
 		<class>encuentros.dominio.Encuentro</class>
 		<class>equipo.dominio.Equipo</class>
+		<class>jugadores.dominio.Jugador</class>
 	</persistence-unit>
 </persistence>
