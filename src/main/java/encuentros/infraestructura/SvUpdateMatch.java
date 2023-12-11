@@ -32,19 +32,35 @@ public class SvUpdateMatch extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id-encuentro-edit"));
-		int idEquipoA = Integer.parseInt(request.getParameter("id-equipo-A-edit"));
-		int idEquipoB = Integer.parseInt(request.getParameter("id-equipo-B-edit"));
+		int idEquipoA = Integer.parseInt(request.getParameter("id-equipo-a-edit"));
+		int idEquipoB = Integer.parseInt(request.getParameter("id-equipo-b-edit"));
 		String fecha = request.getParameter("fecha-edit");
-		Time hora = Time.valueOf(request.getParameter("hora-edit"));
+		String h = request.getParameter("hora-edit");
 		String lugar = request.getParameter("lugar-edit");
-		int resA = Integer.parseInt(request.getParameter("resultado-A-edit"));
-		int resB = Integer.parseInt(request.getParameter("resultado-B-edit"));
+		String ra = request.getParameter("resultado-a-edit");
+		String rb = request.getParameter("resultado-b-edit");
+		int resA;
+		int resB;
 		
 	    SimpleDateFormat formatoEntrada = new SimpleDateFormat("yyyy-MM-dd");
+	    SimpleDateFormat formatoFecha = new SimpleDateFormat("HH:mm");
+	    
+	    if (ra.isEmpty()) {
+	    	resA = 0;
+	    } else {
+	    	resA = Integer.parseInt(ra);
+	    }
+	    
+	    if (rb.isEmpty()) {
+	    	resB = 0;
+	    } else {
+	    	resB = Integer.parseInt(rb);
+	    }
 	    
 	    try {
 	        Date fechaConvertida = new Date(formatoEntrada.parse(fecha).getTime());
-
+	        Time hora = new Time(formatoFecha.parse(h).getTime());
+	        
 	        matchService.update(id, idEquipoA, idEquipoB, fechaConvertida, hora, lugar, resA, resB);
 	        response.sendRedirect("./encuentros");
 	    } catch (ParseException e) {

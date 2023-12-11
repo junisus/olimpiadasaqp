@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.List"%>
+<%@ page import="java.util.Map"%>
+<%@ page import="encuentros.dominio.Encuentro"%>
+<%@ page import="equipo.dominio.Equipo"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -152,41 +156,22 @@
 				</tr>
 			</thead>
 			<tbody>
+				<%  
+                    List<Equipo> equipos = (List<Equipo>) request.getAttribute("equipos");
+                    Map<Equipo, Integer> puntosTotales = (Map<Equipo, Integer>) request.getAttribute("puntosTotales");
+
+                    for (int i = 0; i < equipos.size(); i++) {
+                        Equipo equipo = equipos.get(i);
+                        int puntos = puntosTotales.get(equipo);
+                %>
 				<tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
 					<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-					1
+					<%= i + 1 %>
 					</th>
-					<td class="px-6 py-4">LAS AGUILAS DE AREQUIPA</td>
-					<td class="px-6 py-4">23</td>
+					<td class="px-6 py-4"><%= equipo.getNombre() %></td>
+					<td class="px-6 py-4"><%= puntos %></td>
 				</tr>
-				<tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-					<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-					2
-					</th>
-					<td class="px-6 py-4">Equipo número 2</td>
-					<td class="px-6 py-4">20</td>
-				</tr>
-				<tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-					<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-					3
-					</th>
-					<td class="px-6 py-4">EQUIPO NÜMERO 3</td>
-					<td class="px-6 py-4">15</td>
-				</tr>
-				<tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-					<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-					10
-					</th>
-					<td class="px-6 py-4">EQUIPO NÜMERO 4</td>
-					<td class="px-6 py-4">7</td>
-				</tr>
-				<tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-					<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-					25
-					</th>
-					<td class="px-6 py-4">Equipo número 5</td>
-					<td class="px-6 py-4">0</td>
-				</tr>
+				<% } %>
 			</tbody>
 		</table>
 	</div>
