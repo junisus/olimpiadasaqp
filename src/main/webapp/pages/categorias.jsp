@@ -250,14 +250,14 @@
 									<span class="sr-only">Close modal</span>
 								</button>
 								<div class="p-4 md:p-5 text-center">
-									<form action="SvDeleteEvent" method="POST">
-										<input name="id-evento" type="hidden" id="id-evento"
+									<form action="SvDeleteCategory" method="POST">
+										<input name="id-categoria" type="hidden" id="id-categoria"
 											value="<%=categoria.getId()%>"> <img
 											class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200"
 											aria-hidden="true" src="img/icons/warning-icon.png">
 										<h3
 											class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">¿Seguro
-											que quieres eliminar este evento?</h3>
+											que quieres eliminar esta categoria?</h3>
 										<button data-modal-hide="eliminar-<%=categoria.getId()%>"
 											type="submit"
 											class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
@@ -284,7 +284,7 @@
 								<div
 									class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
 									<h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-										Editar evento</h3>
+										Editar Categoria</h3>
 									<button type="button"
 										class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
 										data-modal-toggle="editar-<%=categoria.getId()%>">
@@ -299,7 +299,7 @@
 									</button>
 								</div>
 								<!-- Modal body -->
-								<form class="p-4 md:p-5" action="SvUpdateEvent" method="POST">
+								<form class="p-4 md:p-5" action="SvUpdateCategory" method="POST">
 									<input name="id-edit" type="hidden" id="id-edit"
 										value="<%=categoria.getId()%>">
 									<div class="grid gap-4 mb-4 grid-cols-2">
@@ -308,16 +308,16 @@
 												class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
 											<input type="text" name="nombre-edit" id="nombre-edit"
 												class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-												placeholder="Escriba el nombre del evento" required=""
+												placeholder="Escriba el nombre de la categoria" required=""
 												value="<%=categoria.getNombre()%>">
 										</div>
 										<div class="col-span-2">
-											<label for="organizador"
+											<label for="descripcion"
 												class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Descripcion</label>
-											<input type="text" name="organizador-edit"
-												id="organizador-edit"
+											<input type="text" name="descripcion-edit"
+												id="descripcion-edit"
 												class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-												placeholder="Escriba el nombre del Organizador" required=""
+												placeholder="Escriba la descripcion" required=""
 												value="<%=categoria.getDescripcion()%>">
 
 										</div>
@@ -360,7 +360,7 @@
 					<div
 						class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
 						<h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-							Crear nuevo Categoria</h3>
+							Crear nueva Categoria</h3>
 						<button type="button"
 							class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
 							data-modal-toggle="agregar-modal">
@@ -385,14 +385,14 @@
 									class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
 								<input type="text" name="nombre" id="nombre"
 									class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-									placeholder="Escriba el nombre del evento" required="">
+									placeholder="Escriba el nombre de la categoria" required="">
 							</div>
 							<div class="col-span-2">
 								<label for="organizador"
 									class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Descripcion</label>
 								<input type="text" name="descripcion" id="descripcion"
 									class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-									placeholder="Escriba el nombre del Organizador" required="">
+									placeholder="Escriba la categoria" required="">
 
 							</div>
 							

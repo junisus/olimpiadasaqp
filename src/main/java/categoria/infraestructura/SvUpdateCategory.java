@@ -14,32 +14,25 @@ import categoria.aplicacion.CategoryService;
 import categoria.aplicacion.CategoryServiceImpl;
 import categoria.dominio.CategoryRepository;
 
+
 @WebServlet(name = "SvUpdateCategory", urlPatterns= {"/SvUpdateCategory"})
 public class SvUpdateCategory extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private CategoryService categoryService;
 
-    public SvUpdateCategory() {
-        super();
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("Oli");
-        CategoryRepository categoryRepository = new CategoryRepositoryImpl(emf);
-        this.categoryService = new CategoryServiceImpl(categoryRepository);	
-    }
+	 public SvUpdateCategory() {
+	        super();
+	        EntityManagerFactory emf = Persistence.createEntityManagerFactory("Oli");
+	        CategoryRepository categoryRepository = new CategoryRepositoryImpl(emf);
+	        this.categoryService = new CategoryServiceImpl(categoryRepository);	
+	    }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("id-edit"));
-        String nombre = request.getParameter("nombre-edit");
-        String descripcion = request.getParameter("descripcion-edit");
+	 protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		    int id = Integer.parseInt(request.getParameter("id-edit"));
+		    String nombre = request.getParameter("nombre-edit");
+		    String descripcion = request.getParameter("descripcion-edit");
 
-        try {
-            // Aquí deberías realizar la actualización solo con id, nombre y descripcion
-            categoryService.update(id, nombre, descripcion);
+		    categoryService.update(id, nombre, descripcion);
+				response.sendRedirect("./categorias");
 
-            // Redirige a la misma página
-            response.sendRedirect(request.getContextPath() + "/eventos");
-        } catch (Exception e) {
-            e.printStackTrace();
-            // Manejo de excepciones
-        }
-    }
-}
+}}
