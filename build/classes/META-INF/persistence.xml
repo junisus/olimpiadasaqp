@@ -8,5 +8,6 @@
 		<class>equipo.dominio.Equipo</class>
 		<class>jugadores.dominio.Jugador</class>
 		<class>deporte.dominio.Deporte</class>
+		<class>categoria.dominio.Categoria</class>
 	</persistence-unit>
 </persistence>
